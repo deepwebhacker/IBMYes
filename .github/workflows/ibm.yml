@@ -35,13 +35,9 @@ jobs:
         ./IBM_Cloud_CLI/ibmcloud target -g "$RESOURSE_ID"
         ./IBM_Cloud_CLI/ibmcloud target --cf
         ./IBM_Cloud_CLI/ibmcloud cf install -v 6.52.0
-        ./IBM_Cloud_CLI/ibmcloud cf api https://api.us-south.cf.cloud.ibm.com
-        ./IBM_Cloud_CLI/ibmcloud cf push
+        ./IBM_Cloud_CLI/ibmcloud target --cf-api https://api.us-south.cf.cloud.ibm.com
     - name: Restart IBM Cloud
       env:
         IBM_APP_NAME: ${{ secrets.IBM_APP_NAME }}
       run: |
         ./IBM_Cloud_CLI/ibmcloud cf restart "$IBM_APP_NAME"
-
-
-
